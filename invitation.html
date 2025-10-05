@@ -234,7 +234,11 @@
     <!-- Modal for confirmation -->
     <div id="confirmation-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2 id="modal-title"></h2>
+            <h2 id="modal-title">联系组织者</h2>
+            <!-- 增加一个用于显示二维码的容器 -->
+            <div id="modal-qr-code-container" style="display: none; margin-bottom: 20px;">
+                <img id="modal-qr-code" src="" alt="微信二维码" style="width: 180px; height: 180px; margin: 0 auto; display: block;">
+            </div>
             <p id="modal-message"></p>
             <button id="modal-close-button" class="button confirm-button">关闭</button>
         </div>
