@@ -97,6 +97,8 @@
         function renderCard(container, user) {
             const isTeacher = user.category === '老师';
             const greetingText = isTeacher ? `尊敬的 ${user.name} 老师` : `Hey, ${user.nickname}!`;
+            const memoryIntro = isTeacher ? '我们永远记得您的教诲：' : '还记得我们常开的玩笑吗？';
+            const navigationUrl = `https://uri.amap.com/marker?position=${invitationData.locationCoordinates}&name=${encodeURIComponent(invitationData.eventLocation)}`;
             const nameText = isTeacher 
                 ? `<h2 class="guest-name teacher-title" style="margin-bottom: 0;">桃李芬芳 · 感念师恩</h2><p style="font-size: 16px; color: #595959; margin-top: 8px;">— 致 ${user.name} 老师 —</p>` 
                 : `<h2 class="guest-name">${user.name}</h2>`;
