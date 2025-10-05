@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>同学会邀请函</title>
     <style>
+        /* --- General Body Styles --- */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
             display: flex;
@@ -16,15 +17,30 @@
             padding: 20px;
             box-sizing: border-box;
         }
-        /* --- All styles from InvitationCard.css go here --- */
+
+        /* --- Invitation Card Styles --- */
         .invitation-card {
             width: 100%;
             max-width: 450px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            border: none !important;
             background: white;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 0.8s 0.3s ease-out forwards;
         }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .invitation-header {
             display: flex;
             align-items: center;
@@ -51,85 +67,26 @@
             margin: 0;
             line-height: 1.2;
         }
-        .personalized-section {
-            text-align: center;
-            padding: 32px 24px;
-        }
-        .guest-name {
-            font-size: 40px;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            color: #1f1f1f;
-            margin: 8px 0 0;
-            line-height: 1.2;
-        }
-        .greeting {
-            font-size: 16px;
-            color: #8c8c8c;
-            margin-bottom: 0;
-        }
-        .divider {
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
-            border: 0;
-            margin: 32px auto;
-        }
-        .memory-quote {
-            background-color: transparent;
-            padding: 0;
-            border: none;
-        }
-        .memory-intro {
-            font-size: 14px;
-            color: #8c8c8c;
-            margin-bottom: 8px;
-        }
-        .quote-content {
-            font-size: 18px;
-            color: #262626;
-            font-style: italic;
-            margin: 0;
-        }
-        .event-details {
-            padding: 24px;
-            border-top: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
-            background-color: #fafafa;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 500;
-            color: #595959;
-            margin-bottom: 24px;
-            gap: 8px;
-        }
-        .event-details h2 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #262626;
-        }
-        .event-details p {
-            font-size: 16px;
-            color: #595959;
-            line-height: 1.8;
-            margin: 8px 0;
-            display: flex;
-        }
-        .event-details p strong {
-            font-weight: 600;
-            margin-right: 8px;
-            color: #262626;
-            white-space: nowrap;
-        }
-        .action-section {
-            padding: 24px;
-        }
+
+        .personalized-section { text-align: center; padding: 32px 24px; }
+        .guest-name { font-size: 40px; font-weight: bold; letter-spacing: 0.1em; color: #1f1f1f; margin: 8px 0 0; line-height: 1.2; }
+        .guest-name.teacher-title { font-size: 32px; letter-spacing: 0.08em; line-height: 1.4; }
+        .greeting { font-size: 16px; color: #8c8c8c; margin-bottom: 0; }
+        .divider { width: 60%; height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent); border: 0; margin: 32px auto; }
+        
+        .memory-quote { background-color: transparent; padding: 0; border: none; }
+        .memory-intro { font-size: 14px; color: #8c8c8c; margin-bottom: 8px; }
+        .quote-content { font-size: 18px; color: #262626; font-style: italic; margin: 0; }
+
+        .event-details { padding: 24px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; background-color: #fafafa; }
+        .section-title { display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: #595959; margin-bottom: 24px; gap: 8px; }
+        .event-details h2 { font-size: 22px; font-weight: 600; margin-bottom: 20px; text-align: center; color: #262626; }
+        .event-details p { font-size: 16px; color: #595959; line-height: 1.8; margin: 8px 0; display: flex; }
+        .event-details p strong { font-weight: 600; margin-right: 8px; color: #262626; white-space: nowrap; }
+        
+        .action-section { padding: 24px; }
+        .map-image { width: 100%; height: auto; border-radius: 8px; margin-bottom: 16px; border: 1px solid #f0f0f0; }
+
         .button {
             display: block;
             width: 100%;
@@ -141,6 +98,11 @@
             text-align: center;
             text-decoration: none;
             box-sizing: border-box;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added transition */
+        }
+        .button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         .confirm-button {
             margin-bottom: 24px;
@@ -152,39 +114,7 @@
             background-color: #f0f0f0;
             color: #333;
         }
-        .map-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            border: 1px solid #f0f0f0;
-        }
-        .guest-name.teacher-title {
-            font-size: 32px;
-            letter-spacing: 0.08em;
-            line-height: 1.4;
-        }
-        .invitation-card {
-            /* ...保留原有样式... */
-            opacity: 0; /* 初始状态透明 */
-            transform: translateY(30px); /* 初始状态在下方30px处 */
-            animation: fadeInSlideUp 0.8s 0.3s ease-out forwards; /* 定义动画 */
-        }
-        @keyframes fadeInSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+        
         /* Modal styles */
         .modal-overlay {
             position: fixed;
@@ -231,11 +161,10 @@
         </div>
     </div>
 
-    <!-- Modal for confirmation -->
+    <!-- Reusable Modal -->
     <div id="confirmation-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2 id="modal-title">联系组织者</h2>
-            <!-- 增加一个用于显示二维码的容器 -->
+            <h2 id="modal-title"></h2>
             <div id="modal-qr-code-container" style="display: none; margin-bottom: 20px;">
                 <img id="modal-qr-code" src="" alt="微信二维码" style="width: 180px; height: 180px; margin: 0 auto; display: block;">
             </div>
@@ -245,28 +174,25 @@
     </div>
 
     <script>
-        const organizerQRCodeUrl = '/organizer-qr.png';
-        // Hardcoded user data
+        const organizerQRCodeUrl = '/organizer-qr.png'; // 组织者微信二维码图片路径
         const users = [
             { id: 'user1', name: '张三', nickname: '三儿', memory: '总是在课堂上睡觉，但考试总能过。', category: '同学' },
             { id: 'user2', name: '李四', nickname: '四哥', memory: '篮球场上的风云人物，现在肚子还在吗？', category: '同学' },
             { id: 'user3', name: '王老师', nickname: '王老师', memory: '您的谆谆教诲，我们至今铭记在心。', category: '老师' },
             { id: 'user4', name: '赵五', nickname: '五子', memory: '“这道题我不会”，然后考了全班第一。', category: '同学' }
         ];
-
         const invitationData = {
             school: '南靖二中 · 2003届 · 同学会',
             eventTitle: '青春不散场 · 我们再相会',
             eventTime: '2025年10月25日 18:00',
             eventLocation: '厦门滨海凯悦尚萃酒店',
             locationCoordinates: '118.10086,24.43632',
-            schoolBadgeUrl: '/school-badge.png', // Assuming it's in public/assets
+            schoolBadgeUrl: '/school-badge.png',
             staticMapUrl: '/static-map.png'
         };
 
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('invitation-container');
-            // Read user ID from path, e.g., /invitation/user1
             const pathParts = window.location.pathname.split('/');
             const userId = pathParts[pathParts.length - 1];
             const user = users.find(u => u.id === userId);
@@ -293,26 +219,17 @@
                             <h1>${invitationData.school}</h1>
                         </div>
                     </header>
-
                     <section class="personalized-section">
                         <p class="greeting">${greetingText}</p>
                         <h2 class="guest-name ${isTeacher ? 'teacher-title' : ''}">${nameText}</h2>
-                        ${user.memory ? `<div class="divider"></div>` : ''}
-                        ${user.memory ? `
-                            <div class="memory-quote">
-                                <p class="memory-intro">${memoryIntro}</p>
-                                <p class="quote-content">“${user.memory}”</p>
-                            </div>
-                        ` : ''}
+                        ${user.memory ? `<div class="divider"></div><div class="memory-quote"><p class="memory-intro">${memoryIntro}</p><p class="quote-content">“${user.memory}”</p></div>` : ''}
                     </section>
-                    
                     <section class="event-details">
                         <div class="section-title"><span>&#x1F4CC;</span><span>聚会信息</span></div>
                         <h2>${invitationData.eventTitle}</h2>
                         <p><strong>时间：</strong>${invitationData.eventTime}</p>
                         <p><strong>地点：</strong>${invitationData.eventLocation}</p>
                     </section>
-
                     <section class="action-section">
                         <button id="confirm-btn" class="button confirm-button">
                             &#x2714;&#xFE0F; 欣然赴约
@@ -325,13 +242,42 @@
                 </div>
             `;
 
-            // Add event listener for the confirmation button
-            document.getElementById('confirm-btn').addEventListener('click', () => {
-                showContactModal(
-                    '联系组织者 · 确认出席',
-                    '请添加组织者微信以确认席位，并加入同学会活动群。',
-                    organizerQRCodeUrl
-                );
+            // ---- Core Logic: Add conditional event listener for the confirmation button ----
+            const confirmBtn = document.getElementById('confirm-btn');
+            confirmBtn.addEventListener('click', async () => {
+                if (isTeacher) {
+                    // --- Logic for Teachers ---
+                    confirmBtn.disabled = true;
+                    confirmBtn.innerText = '正在提交...';
+
+                    try {
+                        const response = await fetch('/api/confirm', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ teacherName: user.name })
+                        });
+
+                        if (response.ok) {
+                            showSimpleModal('提交成功！', `太棒了！我们已收到您（${user.name}）的确认，非常期待您的光临！`);
+                            confirmBtn.innerText = '已确认';
+                            confirmBtn.style.background = '#52c41a'; // Change to green
+                        } else {
+                            throw new Error('Server response was not ok.');
+                        }
+                    } catch (error) {
+                        console.error('Confirmation failed:', error);
+                        showSimpleModal('提交失败', '抱歉，网络似乎出了点问题，请稍后重试或直接联系组织者。');
+                        confirmBtn.innerText = '欣然赴约';
+                        confirmBtn.disabled = false;
+                    }
+                } else {
+                    // --- Logic for Classmates ---
+                    showContactModal(
+                        '联系组织者 · 确认出席',
+                        '请添加组织者微信以确认席位，并加入同学会活动群。',
+                        organizerQRCodeUrl
+                    );
+                }
             });
         }
 
@@ -343,8 +289,8 @@
                 </div>
             `;
         }
-
-        // 创建一个新的、更通用的 Modal 显示函数
+        
+        // Modal function for classmates (shows QR code)
         function showContactModal(title, message, qrCodeUrl) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-message').innerText = message;
@@ -354,13 +300,34 @@
             
             if (qrCodeUrl) {
                 qrImage.src = qrCodeUrl;
-                qrContainer.style.display = 'block'; // 显示二维码容器
+                qrContainer.style.display = 'block';
             } else {
-                qrContainer.style.display = 'none'; // 隐藏二维码容器
+                qrContainer.style.display = 'none';
             }
+
             const modal = document.getElementById('confirmation-modal');
             modal.classList.add('visible');
-            // ...保留原有的关闭逻辑
+
+            document.getElementById('modal-close-button').onclick = () => {
+                modal.classList.remove('visible');
+            };
+            modal.onclick = (event) => {
+                if (event.target === modal) {
+                    modal.classList.remove('visible');
+                }
+            };
+        }
+
+        // New modal function for teachers (shows simple message)
+        function showSimpleModal(title, message) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            
+            document.getElementById('modal-qr-code-container').style.display = 'none'; // Ensure QR code is hidden
+
+            const modal = document.getElementById('confirmation-modal');
+            modal.classList.add('visible');
+
             document.getElementById('modal-close-button').onclick = () => {
                 modal.classList.remove('visible');
             };
