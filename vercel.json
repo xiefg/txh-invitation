@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/invitation/:user",
+      "destination": "/invitation.html"
+    }
+  ]
+}
