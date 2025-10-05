@@ -164,6 +164,27 @@
             letter-spacing: 0.08em;
             line-height: 1.4;
         }
+        .invitation-card {
+            /* ...保留原有样式... */
+            opacity: 0; /* 初始状态透明 */
+            transform: translateY(30px); /* 初始状态在下方30px处 */
+            animation: fadeInSlideUp 0.8s 0.3s ease-out forwards; /* 定义动画 */
+        }
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
         /* Modal styles */
         .modal-overlay {
             position: fixed;
@@ -220,6 +241,7 @@
     </div>
 
     <script>
+        const organizerQRCodeUrl = '/organizer-qr.png';
         // Hardcoded user data
         const users = [
             { id: 'user1', name: '张三', nickname: '三儿', memory: '总是在课堂上睡觉，但考试总能过。', category: '同学' },
@@ -301,7 +323,11 @@
 
             // Add event listener for the confirmation button
             document.getElementById('confirm-btn').addEventListener('click', () => {
-                showModal('确认成功', `感谢您的确认，${user.nickname}！我们非常期待您的到来。`);
+                showContactModal(
+                    '联系组织者 · 确认出席',
+                    '请添加组织者微信以确认席位，并加入同学会活动群。',
+                    organizerQRCodeUrl
+                );
             });
         }
 
@@ -314,12 +340,23 @@
             `;
         }
 
-        function showModal(title, message) {
+        // 创建一个新的、更通用的 Modal 显示函数
+        function showContactModal(title, message, qrCodeUrl) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-message').innerText = message;
+            
+            const qrContainer = document.getElementById('modal-qr-code-container');
+            const qrImage = document.getElementById('modal-qr-code');
+            
+            if (qrCodeUrl) {
+                qrImage.src = qrCodeUrl;
+                qrContainer.style.display = 'block'; // 显示二维码容器
+            } else {
+                qrContainer.style.display = 'none'; // 隐藏二维码容器
+            }
             const modal = document.getElementById('confirmation-modal');
             modal.classList.add('visible');
-
+            // ...保留原有的关闭逻辑
             document.getElementById('modal-close-button').onclick = () => {
                 modal.classList.remove('visible');
             };
