@@ -5,149 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>同学会邀请函</title>
     <style>
+        /* CSS样式部分保持不变，此处省略以节省篇幅 */
         /* --- General Body Styles --- */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: #f0f2f5; padding: 20px; box-sizing: border-box; }
         /* --- Invitation Card Styles --- */
-        .invitation-card {
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            background: white;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInSlideUp 0.8s 0.3s ease-out forwards;
-        }
-
-        @keyframes fadeInSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .invitation-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 24px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-        .invitation-header.teacher-header {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-        }
-        .header-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
-            object-fit: cover;
-        }
-        .header-info h1 {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0;
-            line-height: 1.2;
-        }
-
+        .invitation-card { width: 100%; max-width: 450px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); border-radius: 12px; background: white; opacity: 0; transform: translateY(30px); animation: fadeInSlideUp 0.8s 0.3s ease-out forwards; }
+        @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .invitation-header { display: flex; align-items: center; gap: 16px; padding: 24px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+        .invitation-header.teacher-header { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); }
+        .header-avatar { width: 64px; height: 64px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); object-fit: cover; }
+        .header-info h1 { font-size: 20px; font-weight: 600; margin: 0; line-height: 1.2; }
         .personalized-section { text-align: center; padding: 32px 24px; }
         .guest-name { font-size: 40px; font-weight: bold; letter-spacing: 0.1em; color: #1f1f1f; margin: 8px 0 0; line-height: 1.2; }
         .guest-name.teacher-title { font-size: 32px; letter-spacing: 0.08em; line-height: 1.4; }
         .greeting { font-size: 16px; color: #8c8c8c; margin-bottom: 0; }
         .divider { width: 60%; height: 1px; background: linear-gradient(to right, transparent, #e0e0e0, transparent); border: 0; margin: 32px auto; }
-        
         .memory-quote { background-color: transparent; padding: 0; border: none; }
         .memory-intro { font-size: 14px; color: #8c8c8c; margin-bottom: 8px; }
         .quote-content { font-size: 18px; color: #262626; font-style: italic; margin: 0; }
-
         .event-details { padding: 24px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; background-color: #fafafa; }
         .section-title { display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: #595959; margin-bottom: 24px; gap: 8px; }
         .event-details h2 { font-size: 22px; font-weight: 600; margin-bottom: 20px; text-align: center; color: #262626; }
         .event-details p { font-size: 16px; color: #595959; line-height: 1.8; margin: 8px 0; display: flex; }
         .event-details p strong { font-weight: 600; margin-right: 8px; color: #262626; white-space: nowrap; }
-        
         .action-section { padding: 24px; }
         .map-image { width: 100%; height: auto; border-radius: 8px; margin-bottom: 16px; border: 1px solid #f0f0f0; }
-
-        .button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            box-sizing: border-box;
-            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added transition */
-        }
-        .button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        .confirm-button {
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #1890ff, #40a9ff);
-            color: white;
-            font-weight: 500;
-        }
-        .nav-button {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        
+        .button { display: block; width: 100%; padding: 12px; font-size: 16px; border-radius: 8px; border: none; cursor: pointer; text-align: center; text-decoration: none; box-sizing: border-box; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .button:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .confirm-button { margin-bottom: 24px; background: linear-gradient(135deg, #1890ff, #40a9ff); color: white; font-weight: 500; }
+        .nav-button { background-color: #f0f0f0; color: #333; }
         /* Modal styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-        .modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            background: white;
-            padding: 24px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            transform: scale(0.9);
-            transition: transform 0.3s;
-        }
-        .modal-overlay.visible .modal-content {
-            transform: scale(1);
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        .modal-overlay.visible { opacity: 1; visibility: visible; }
+        .modal-content { background: white; padding: 24px; border-radius: 8px; width: 90%; max-width: 400px; text-align: center; transform: scale(0.9); transition: transform 0.3s; }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
         .modal-content h2 { margin-top: 0; }
         .modal-content p { margin-bottom: 24px; }
     </style>
@@ -174,7 +65,7 @@
     </div>
 
     <script>
-        const organizerQRCodeUrl = '/organizer-qr.png'; // 组织者微信二维码图片路径
+        const organizerQRCodeUrl = '/organizer-qr.png';
         const users = [
             { id: 'user1', name: '张三', nickname: '三儿', memory: '总是在课堂上睡觉，但考试总能过。', category: '同学' },
             { id: 'user2', name: '李四', nickname: '四哥', memory: '篮球场上的风云人物，现在肚子还在吗？', category: '同学' },
@@ -215,9 +106,7 @@
                 <div class="invitation-card">
                     <header class="invitation-header ${isTeacher ? 'teacher-header' : ''}">
                         <img src="${invitationData.schoolBadgeUrl}" alt="校徽" class="header-avatar" />
-                        <div class="header-info">
-                            <h1>${invitationData.school}</h1>
-                        </div>
+                        <div class="header-info"><h1>${invitationData.school}</h1></div>
                     </header>
                     <section class="personalized-section">
                         <p class="greeting">${greetingText}</p>
@@ -231,112 +120,71 @@
                         <p><strong>地点：</strong>${invitationData.eventLocation}</p>
                     </section>
                     <section class="action-section">
-                        <button id="confirm-btn" class="button confirm-button">
-                            &#x2714;&#xFE0F; 欣然赴约
-                        </button>
+                        <button id="confirm-btn" class="button confirm-button">&#x2714;&#xFE0F; 欣然赴约</button>
                         <img src="${invitationData.staticMapUrl}" alt="活动地点地图" class="map-image" />
-                        <a href="${navigationUrl}" target="_blank" rel="noopener noreferrer" class="button nav-button">
-                            &#x1F4CD; 一键导航
-                        </a>
+                        <a href="${navigationUrl}" target="_blank" rel="noopener noreferrer" class="button nav-button">&#x1F4CD; 一键导航</a>
                     </section>
                 </div>
             `;
 
-            // ---- Core Logic: Add conditional event listener for the confirmation button ----
+            // ---- 【核心修改】为按钮绑定事件，并集成 localStorage 逻辑 ----
             const confirmBtn = document.getElementById('confirm-btn');
-            confirmBtn.addEventListener('click', async () => {
-                if (isTeacher) {
-                    // --- Logic for Teachers ---
-                    confirmBtn.disabled = true;
-                    confirmBtn.innerText = '正在提交...';
-
-                    try {
-                        const response = await fetch('/api/confirm', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ teacherName: user.name })
-                        });
-
-                        if (response.ok) {
-                            showSimpleModal('提交成功！', `太棒了！我们已收到您（${user.name}）的确认，非常期待您的光临！`);
-                            confirmBtn.innerText = '已确认';
-                            confirmBtn.style.background = '#52c41a'; // Change to green
-                        } else {
-                            throw new Error('Server response was not ok.');
-                        }
-                    } catch (error) {
-                        console.error('Confirmation failed:', error);
-                        showSimpleModal('提交失败', '抱歉，网络似乎出了点问题，请稍后重试或直接联系组织者。');
-                        confirmBtn.innerText = '欣然赴约';
-                        confirmBtn.disabled = false;
-                    }
-                } else {
-                    // --- Logic for Classmates ---
-                    showContactModal(
-                        '联系组织者 · 确认出席',
-                        '请添加组织者微信以确认席位，并加入同学会活动群。',
-                        organizerQRCodeUrl
-                    );
-                }
-            });
-        }
-
-        function renderError(container) {
-            container.innerHTML = `
-                <div class="invitation-card" style="padding: 24px; text-align: center;">
-                    <h2>无法加载邀请函</h2>
-                    <p>链接无效或已过期，请联系活动组织者。</p>
-                </div>
-            `;
-        }
-        
-        // Modal function for classmates (shows QR code)
-        function showContactModal(title, message, qrCodeUrl) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-message').innerText = message;
             
-            const qrContainer = document.getElementById('modal-qr-code-container');
-            const qrImage = document.getElementById('modal-qr-code');
+            // 为每个用户创建一个唯一的 storage key，例如 'reunion_confirmation_user3'
+            const storageKey = `reunion_confirmation_${user.id}`;
             
-            if (qrCodeUrl) {
-                qrImage.src = qrCodeUrl;
-                qrContainer.style.display = 'block';
+            // 【新增】加载时检查：如果是老师，并且在 localStorage 中找到了确认记录
+            if (isTeacher && localStorage.getItem(storageKey) === 'confirmed') {
+                // 直接将按钮设置为已确认状态
+                confirmBtn.innerText = '已确认';
+                confirmBtn.style.background = '#52c41a'; // 绿色
+                confirmBtn.disabled = true; // 禁用按钮
             } else {
-                qrContainer.style.display = 'none';
+                // 否则，为按钮绑定正常的点击事件
+                confirmBtn.addEventListener('click', async () => {
+                    if (isTeacher) { // 老师的逻辑
+                        confirmBtn.disabled = true;
+                        confirmBtn.innerText = '正在提交...';
+
+                        try {
+                            const response = await fetch('/api/confirm', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ teacherName: user.name })
+                            });
+
+                            if (response.ok) {
+                                showSimpleModal('提交成功！', `太棒了！我们已收到您（${user.name}）的确认，非常期待您的光临！`);
+                                confirmBtn.innerText = '已确认';
+                                confirmBtn.style.background = '#52c41a';
+                                
+                                // 【新增】成功后存储：将确认状态写入 localStorage
+                                localStorage.setItem(storageKey, 'confirmed');
+
+                            } else { throw new Error('Server response was not ok.'); }
+                        } catch (error) {
+                            console.error('Confirmation failed:', error);
+                            showSimpleModal('提交失败', '抱歉，网络似乎出了点问题，请稍后重试或直接联系组织者。');
+                            confirmBtn.innerText = '欣然赴约';
+                            confirmBtn.disabled = false;
+                        }
+                    } else { // 同学的逻辑
+                        showContactModal('联系组织者 · 确认出席', '请添加组织者微信以确认席位，并加入同学会活动群。', organizerQRCodeUrl);
+                    }
+                });
             }
-
-            const modal = document.getElementById('confirmation-modal');
-            modal.classList.add('visible');
-
-            document.getElementById('modal-close-button').onclick = () => {
-                modal.classList.remove('visible');
-            };
-            modal.onclick = (event) => {
-                if (event.target === modal) {
-                    modal.classList.remove('visible');
-                }
-            };
         }
 
-        // New modal function for teachers (shows simple message)
-        function showSimpleModal(title, message) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-message').innerText = message;
-            
-            document.getElementById('modal-qr-code-container').style.display = 'none'; // Ensure QR code is hidden
+        function renderError(container) { /* ...此函数无需修改... */ }
+        function showContactModal(title, message, qrCodeUrl) { /* ...此函数无需修改... */ }
+        function showSimpleModal(title, message) { /* ...此函数无需修改... */ }
+        
+        // --- 省略了未修改的函数以保持简洁 ---
+        // (renderError, showContactModal, showSimpleModal 的函数体与之前完全相同)
+        function renderError(container) { container.innerHTML = `<div class="invitation-card" style="padding: 24px; text-align: center;"><h2>无法加载邀请函</h2><p>链接无效或已过期，请联系活动组织者。</p></div>`; }
+        function showContactModal(title, message, qrCodeUrl) { document.getElementById('modal-title').innerText = title; document.getElementById('modal-message').innerText = message; const qrContainer = document.getElementById('modal-qr-code-container'); const qrImage = document.getElementById('modal-qr-code'); if (qrCodeUrl) { qrImage.src = qrCodeUrl; qrContainer.style.display = 'block'; } else { qrContainer.style.display = 'none'; } const modal = document.getElementById('confirmation-modal'); modal.classList.add('visible'); document.getElementById('modal-close-button').onclick = () => modal.classList.remove('visible'); modal.onclick = (event) => { if (event.target === modal) modal.classList.remove('visible'); }; }
+        function showSimpleModal(title, message) { document.getElementById('modal-title').innerText = title; document.getElementById('modal-message').innerText = message; document.getElementById('modal-qr-code-container').style.display = 'none'; const modal = document.getElementById('confirmation-modal'); modal.classList.add('visible'); document.getElementById('modal-close-button').onclick = () => modal.classList.remove('visible'); modal.onclick = (event) => { if (event.target === modal) modal.classList.remove('visible'); }; }
 
-            const modal = document.getElementById('confirmation-modal');
-            modal.classList.add('visible');
-
-            document.getElementById('modal-close-button').onclick = () => {
-                modal.classList.remove('visible');
-            };
-            modal.onclick = (event) => {
-                if (event.target === modal) {
-                    modal.classList.remove('visible');
-                }
-            };
-        }
     </script>
 </body>
 </html>
