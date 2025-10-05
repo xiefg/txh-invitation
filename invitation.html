@@ -240,8 +240,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('invitation-container');
-            const urlParams = new URLSearchParams(window.location.search);
-            const userId = urlParams.get('user');
+            // Read user ID from path, e.g., /invitation/user1
+            const pathParts = window.location.pathname.split('/');
+            const userId = pathParts[pathParts.length - 1];
             const user = users.find(u => u.id === userId);
 
             if (user) {
