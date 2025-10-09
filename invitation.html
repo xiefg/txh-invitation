@@ -74,7 +74,7 @@
         const invitationData = {
             school: '南靖二中 · 2003届 · 同学会',
             eventTitle: '22周年重聚 · 青春不散场',
-            eventTime: '2025年10月25日（星期六）',
+            eventTime: '2025年10月25日（星期六下午2点）',
             eventLocation: '厦门滨海凯悦尚萃酒店',
             locationCoordinates: '118.10086,24.43632',
             schoolBadgeUrl: '/school-badge.png',
@@ -162,7 +162,7 @@
                             confirmBtn.disabled = false;
                         }
                     } else { // 同学的逻辑
-                        showContactModal('联系组织者 · 确认出席', '请添加组织者微信以确认席位。', organizerQRCodeUrl);
+                        showContactModal(school, '请扫码进群以确认席位。', organizerQRCodeUrl);
                     }
                 });
             }
