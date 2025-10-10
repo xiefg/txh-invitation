@@ -75,9 +75,32 @@
         
         const users = [
             { id: 'classmate-generic', name: '亲爱的同学', category: '同学' },
-            { id: 'teacher-wu', name: '吴伟华', category: '老师', subject: '语文' },
-            { id: 'teacher-lin', name: '林老师', category: '老师', subject: '数学' },
-            { id: 'teacher-chen', name: '陈老师', category: '老师', subject: '生物' }
+            // --- 语文老师 ---
+            { id: 'teacher-chenguoyou', name: '陈国游', category: '老师', subject: '语文' },
+            { id: 'teacher-wangqin', name: '王芹', category: '老师', subject: '语文' },
+            { id: 'teacher-wuzaicheng', name: '吴再成', category: '老师', subject: '语文' },
+            // --- 英语老师 ---
+            { id: 'teacher-wangxiaoming', name: '王小明', category: '老师', subject: '英语' },
+            { id: 'teacher-wuziqing', name: '吴梓清', category: '老师', subject: '英语' },
+            { id: 'teacher-youshuqin', name: '游淑琴', category: '老师', subject: '英语' },
+            { id: 'teacher-chenzhicai', name: '陈志才', category: '老师', subject: '英语' },
+            // --- 数学老师 ---
+            { id: 'teacher-wuweihua', name: '吴伟华', category: '老师', subject: '数学' },
+            { id: 'teacher-wuguoquan', name: '吴国全', category: '老师', subject: '数学' },
+            { id: 'teacher-yangzili', name: '杨自力', category: '老师', subject: '数学' },
+            // --- 物理老师 ---
+            { id: 'teacher-wujinshi', name: '吴金石', category: '老师', subject: '物理' },
+            { id: 'teacher-zhangzhaofu', name: '张兆福', category: '老师', subject: '物理' },
+            // --- 历史老师 ---
+            { id: 'teacher-chencaiyuan', name: '陈财源', category: '老师', subject: '历史' },
+            // --- 政治老师 ---
+            { id: 'teacher-wuqingbin', name: '吴庆彬', category: '老师', subject: '政治' },
+            // --- 地理老师 ---
+            { id: 'teacher-yangmeizhen', name: '杨美珍', category: '老师', subject: '地理' },
+            // --- 体育老师 ---
+            { id: 'teacher-wuqianqiang', name: '吴倩强', category: '老师', subject: '体育' },
+            // --- 化学老师 ---
+            { id: 'teacher-lisizhong', name: '李四忠', category: '老师', subject: '化学' }
         ];
 
         const invitationData = {
@@ -98,6 +121,10 @@
                 '物理': '您让我们看到万物皆有规律，也让我们懂得探索是永恒的动力。',
                 '化学': '您让我们见证奇妙的化学反应，也让我们懂得事物的融合与变化之美。',
                 '生物': '您带我们领略生命的奥秘，也让我们学会珍惜与敬畏。',
+                '历史': '您带我们穿越古今，也让我们懂得了如何鉴往知来。',
+                '政治': '您教我们关心家国天下，也教我们理性思辨，履行责任。',
+                '地理': '您带我们丈量山川湖海，也让我们心中装下了整个世界。',
+                '体育': '您教我们强健体魄，也教我们懂得坚持与拼搏的意义。',
                 '默认': '您的谆谆教诲，我们至今铭记在心。'
             };
             return salutes[subject] || salutes['默认'];
