@@ -24,7 +24,13 @@
         
         .teacher-salute { margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0; }
         .teacher-salute p { font-size: 14px; color: #8c8c8c; margin-bottom: 8px; font-style: italic; }
-        .teacher-salute h3 { font-size: 18px; color: #262626; margin: 0; font-weight: 500; }
+        .teacher-salute h3 { 
+            font-size: 16px;      /* Reduced from default h3 size */
+            color: #333;           /* Slightly softer than pure black */
+            margin: 0; 
+            font-weight: 500;     /* Changed from bold to semi-bold */
+            line-height: 1.6;     /* Added for better spacing on wrapped lines */
+        }
         
         .event-details { padding: 24px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; background-color: #fafafa; }
         .section-title { display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: #595959; margin-bottom: 24px; gap: 8px; }
@@ -123,7 +129,7 @@
                         <p class="salutation">尊敬的 ${user.name} 老师：</p>
                         <p>您好！</p>
                         <p>距2003年那个夏天我们走出南靖二中校门，已匆匆二十二载。为感恩师泽，共叙情谊，我们诚挚地邀请您拨冗参加“南靖二中2003届同学会”！</p>
-                        <p class="closing">全体同学期盼与您重逢，再次聆听您的教诲！<br>2003届南靖二中全体同学 敬上</p>
+                        <p class="closing">期盼与您重逢，再次聆听您的教诲！<br>2003届南靖二中全体同学 敬上</p>
                     </div>
                     <div class="teacher-salute">
                         <p>我们永远记得：</p>
